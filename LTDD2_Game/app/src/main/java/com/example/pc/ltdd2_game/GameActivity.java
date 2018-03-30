@@ -8,6 +8,6 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_4in1_layout);
+        setContentView(R.layout.option_layout);
     }
 }
