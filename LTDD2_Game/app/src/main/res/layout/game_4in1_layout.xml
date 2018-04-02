@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    
+
     tools:context="com.example.pc.ltdd2_game.GameActivity">
 
 
@@ -14,7 +14,5 @@
         android:layout_height="match_parent" 
         android:text="abc"
         />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
 </LinearLayout>
