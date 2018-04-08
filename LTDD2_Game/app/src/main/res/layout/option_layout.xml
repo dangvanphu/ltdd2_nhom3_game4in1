@@ -11,20 +11,20 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_gravity="center"
-        android:paddingTop="30dp"
+        android:paddingTop="20dp"
         android:src="@drawable/option" />
 
     <Button
-        android:id="@+id/btnStart"
+        android:id="@+id/btnMusic"
         style="@style/StyleButton"
-        android:text="Music : on"
+        android:text=" music : on"
         android:layout_gravity="center"/>
 
     <Button
-        android:id="@+id/btnContinue"
+        android:id="@+id/btnSound"
         style="@style/StyleButton"
-        android:layout_marginTop="25dp"
-        android:text="sound : on"
+        android:layout_marginTop="30dp"
+        android:text=" sound : on"
         android:layout_gravity="center"/>
 
 </LinearLayout>
