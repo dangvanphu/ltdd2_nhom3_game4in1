@@ -2,9 +2,9 @@ package com.example.pc.ltdd2_game.data_models;
 
 public class ItemContinue {
     private String userName;
-    private int score;
+    private String score;
 
-    public ItemContinue(String userName, int score) {
+    public ItemContinue(String userName, String score) {
         this.userName = userName;
         this.score = score;
     }
@@ -17,11 +17,11 @@ public class ItemContinue {
         this.userName = userName;
     }
 
-    public int getScore() {
+    public String getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(String score) {
         this.score = score;
     }
 }

@@ -51,7 +51,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()){
             do{
                 String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
-                int score = Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_SCORE)));
+                String score = cursor.getString(cursor.getColumnIndex(COLUMN_SCORE));
 
                 items.add(new ItemContinue(name,score));
             }while (cursor.moveToNext());
