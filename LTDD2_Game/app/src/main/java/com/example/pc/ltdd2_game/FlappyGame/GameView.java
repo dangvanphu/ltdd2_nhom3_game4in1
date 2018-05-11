@@ -1,5 +1,10 @@
 package com.example.pc.ltdd2_game.FlappyGame;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,16 +13,21 @@ import android.graphics.Matrix;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.pc.ltdd2_game.ChooseGameActivity;
+import com.example.pc.ltdd2_game.FlappyActivity;
 import com.example.pc.ltdd2_game.FlappyGame.CharacterSprite;
 import com.example.pc.ltdd2_game.FlappyGame.MainThread;
 import com.example.pc.ltdd2_game.FlappyGame.PipeSprite;
+import com.example.pc.ltdd2_game.GameActivity;
 import com.example.pc.ltdd2_game.R;
+import com.example.pc.ltdd2_game.StartActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
@@ -28,6 +38,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     public static int velocity = 10;
     private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
     private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+    private Dialog dialog;
 
     public GameView(Context context) {
         super(context);
@@ -63,8 +74,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event)
-    {
+    public boolean onTouchEvent(MotionEvent event) {
         characterSprite.y = characterSprite.y - (characterSprite.yVelocity * 10);
         return super.onTouchEvent(event);
     }
@@ -107,7 +117,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                 thread.setRunning(false);
                 thread.join();
 
-            } catch(InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             retry = false;
@@ -123,12 +133,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     @Override
-    public void draw(Canvas canvas)
-    {
+    public void draw(Canvas canvas) {
 
         super.draw(canvas);
-        if(canvas!=null) {
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.backgroud);
+        if (canvas != null) {
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.backgroud_potrait);
             canvas.drawBitmap(bitmap, 0, 0, null);
             //canvas.drawRGB(0, 200, 205);
             characterSprite.draw(canvas);
@@ -147,6 +156,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         pipes.add(pipe3);
 
         for (int i = 0; i < pipes.size(); i++) {
+            //Score
+
             //Detect if the character is touching one of the pipes
             if (characterSprite.y < pipes.get(i).yY + (screenHeight / 2) - (gapHeight / 2) && characterSprite.x + 300 > pipes.get(i).xX && characterSprite.x < pipes.get(i).xX + 500) {
                 resetLevel();
@@ -166,13 +177,16 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
         //Detect if the character has gone off the bottom or top of the screen
         if (characterSprite.y + 240 < 0) {
-            resetLevel(); }
+            resetLevel();
+        }
         if (characterSprite.y > screenHeight) {
-            resetLevel(); }
+            resetLevel();
+        }
     }
 
 
     public void resetLevel() {
+
         characterSprite.y = 100;
         pipe1.xX = 2000;
         pipe1.yY = 0;
@@ -180,7 +194,18 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         pipe2.yY = 200;
         pipe3.xX = 3200;
         pipe3.yY = 250;
-
     }
 
+    public boolean isOver() {
+        List<PipeSprite> pipes = new ArrayList<>();
+        boolean f = false;
+        for (int i = 0; i < pipes.size(); i++) {
+            //Score
+            if (characterSprite.y < pipes.get(i).yY + (screenHeight / 2) - (gapHeight / 2) && characterSprite.x + 300 > pipes.get(i).xX && characterSprite.x < pipes.get(i).xX + 500) {
+                f = true;
+            } else
+                f = false;
+        }
+        return f;
+    }
 }
