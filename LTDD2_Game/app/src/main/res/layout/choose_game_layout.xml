@@ -5,37 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
     android:background="@drawable/choosegame_background"
     tools:context=".ChooseGameActivity">
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginLeft="10dp"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
         >
-       <TextView
-           android:id="@+id/txtScoreS"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="Your score : 0"
-           android:textColor="#d2121bd4"
-           android:textSize="40dp"
-           android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/txtUser"
+        <ImageView
+            android:id="@+id/gameFlappy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name :"
-            android:textColor="#d2121bd4"
-            android:textSize="40dp"
-            android:textStyle="bold"/>
+            android:src="@drawable/icon_gamflappy"
+
+            android:layout_marginTop="70dp"
+
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         >
         <ImageView
@@ -45,24 +35,7 @@
             android:src="@drawable/icon_gamelathinh"
 
             android:layout_marginTop="70dp"/>
-        <ImageView
-            android:id="@+id/gameFlappy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_gamflappy"
-            android:layout_marginTop="70dp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center_horizontal"
-        android:layout_weight="1">
-        <Button
-            android:id="@+id/btnSave"
-            style="@style/StyleButton"
-            android:layout_marginTop="25dp"
-            android:text="Save"/>
+
     </LinearLayout>
 
 </LinearLayout>
