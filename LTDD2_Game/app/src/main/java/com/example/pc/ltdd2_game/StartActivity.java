@@ -110,15 +110,14 @@ public class StartActivity extends AppCompatActivity {
                 alert.show();
             }
         });
-//<<<<<<< HEAD
-//
-//        btnInfo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                dialog.show();
-//            }
-//        });
-//    }
+
+
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.show();
+            }
+        });
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -136,15 +135,15 @@ public class StartActivity extends AppCompatActivity {
 //            Toast.makeText(this, String.valueOf(isPlaying), Toast.LENGTH_LONG).show();
         }
 
-        btnInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog alert = new AlertDialog.Builder(StartActivity.this).create();
-                alert.setTitle("About Us");
-                alert.setMessage("Nhóm 3: Game 2 in 1\nVersion: 1.0\nThành viên: Phú, Vinh, Pháp, Toàn, Quang\nGVHD: Thầy Trương Bá Thái");
-                alert.show();
-            }
-        });
+//        btnInfo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AlertDialog alert = new AlertDialog.Builder(StartActivity.this).create();
+//                alert.setTitle("About Us");
+//                alert.setMessage("Nhóm 3: Game 2 in 1\nVersion: 1.0\nThành viên: Phú, Vinh, Pháp, Toàn, Quang\nGVHD: Thầy Trương Bá Thái");
+//                alert.show();
+//            }
+//        });
     }
 }
 
