@@ -119,7 +119,7 @@ public class LatHinhActivity extends Activity {
                 this, R.array.type, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
-        MediaPlayer song = MediaPlayer.create(LatHinhActivity.this,R.)
+        //MediaPlayer song = MediaPlayer.create(LatHinhActivity.this,R.);
 
 
         s.setOnItemSelectedListener(new OnItemSelectedListener(){
