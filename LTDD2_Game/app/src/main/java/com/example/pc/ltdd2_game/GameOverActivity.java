@@ -1,11 +1,10 @@
 package com.example.pc.ltdd2_game;
 
-        import android.content.Intent;
-        import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class GameOverActivity extends AppCompatActivity {
 private TextView txtScore;
@@ -24,8 +23,10 @@ private Button btnExit;
         btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GameOverActivity.this, StartActivity.class);
-                startActivity(intent);
+
+                GameOverActivity.super.onBackPressed();
+//                Intent intent = new Intent(GameOverActivity.this, StartActivity.class);
+//                startActivity(intent);
             }
         });
     }
