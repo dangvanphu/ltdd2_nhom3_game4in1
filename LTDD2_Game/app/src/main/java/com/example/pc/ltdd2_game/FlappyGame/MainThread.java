@@ -30,7 +30,7 @@ public class MainThread extends Thread {
         long startTime;
         long timeMillis;
         long waitTime;
-        long totalTime = 40;
+        long totalTime = 50;
         int frameCount =0;
         long targetTime = 1000/targetFPS;
 
