@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">LTDD2_Game</string>
+
+    <string-array name="type">
+        <item>New Game</item>
+        <item>4 X 7</item>
+    </string-array>
 </resources>

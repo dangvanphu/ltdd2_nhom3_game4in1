@@ -1,7 +1,6 @@
 package com.example.pc.ltdd2_game;
 
-import android.annotation.SuppressLint;
-import android.support.v7.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -9,10 +8,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.regex.Pattern;
 
+import android.media.MediaPlayer;
+import android.widget.ProgressBar;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.text.util.Linkify;
@@ -28,9 +30,11 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Toast;
+import android.os.CountDownTimer;
 public class LatHinhActivity extends Activity {
     private static int ROW_COUNT = -1;
-    private static int COL_COUNT = -1;
+    private static int COL_COUNT =-1;
     private Context context;
     private Drawable backImage;
     private int [] [] cards;
@@ -38,28 +42,133 @@ public class LatHinhActivity extends Activity {
     private Card firstCard;
     private Card seconedCard;
     private ButtonListener buttonListener;
-    private TableLayout mainTable;
-    private static final Object lock = new Object();
-
+    private static Object lock = new Object();
+    ProgressBar progressBar;
     int turns;
+    Button start_timer;
+    Button button_exit;
+    CountDownTimer myCountDownTimer;
+    private TableLayout mainTable;
     private UpdateCardsHandler handler;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         handler = new UpdateCardsHandler();
         loadImages();
         setContentView(R.layout.lat_hinh_layout);
-        mainTable = (TableLayout)findViewById(R.id.TableLayout03);
         backImage =  getResources().getDrawable(R.drawable.icon);
+        start_timer=(Button)findViewById(R.id.buttonStart);
+        button_exit=(Button)findViewById(R.id.exit);
+        button_exit.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        progressBar=(ProgressBar)findViewById(R.id.progressbar);
+        start_timer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                CountDownTimer countDownTimer = new CountDownTimer(100000, 1000) {
+                    @Override
+                    public void onTick(long l) {
+                        int current = progressBar.getProgress();
+                        if (current >= progressBar.getMax())
+                        {
+                            current = 0 ;
+                        }
+                        progressBar.setProgress(current + 1);
+                    }
+
+                    @Override
+                    public void onFinish()
+                    {
+
+
+                        Toast.makeText(LatHinhActivity.this,"qua man moi  ",Toast.LENGTH_SHORT).show();
+                        newGame(4,8);
+                        int current = progressBar.getProgress();
+                        if (current >= progressBar.getMax())
+                        {
+                            current = 0 ;
+                        }
+                        progressBar.setProgress(current + 5);
+                        this.start();
+                    }
+                };
+                countDownTimer.start();
+                    }
+
+
+        });
 
 
         buttonListener = new ButtonListener();
 
-       //
+        mainTable = (TableLayout)findViewById(R.id.TableLayout03);
+
+
+        context  = mainTable.getContext();
+
+        Spinner s = (Spinner) findViewById(R.id.Spinner01);
+        ArrayAdapter adapter;
+        adapter = ArrayAdapter.createFromResource(
+                this, R.array.type, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s.setAdapter(adapter);
+        MediaPlayer song = MediaPlayer.create(LatHinhActivity.this,R.)
+
+
+        s.setOnItemSelectedListener(new OnItemSelectedListener(){
+
+            @Override
+            public void onItemSelected(
+                    android.widget.AdapterView<?> arg0,
+                    View arg1, int pos, long arg3){
+
+                ((Spinner) findViewById(R.id.Spinner01)).setSelection(1);
+
+                int x,y;
+                newGame(x=4,y=6);
+
+            }
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+
+            }
+
+        });
+    }
+
+    private void newGame(int c, int r) {
+        ROW_COUNT = r;
+        COL_COUNT = c;
+
+        cards = new int [COL_COUNT] [ROW_COUNT];
+
+
+        TableRow tr = ((TableRow)findViewById(R.id.TableRow03));
+        tr.removeAllViews();
+
+        mainTable = new TableLayout(context);
+        tr.addView(mainTable);
+
+        for (int y = 0; y < ROW_COUNT; y++) {
+            mainTable.addView(createRow(y));
+        }
+
+        firstCard=null;
+        loadCards();
+
+        turns=0;
+        ((TextView)findViewById(R.id.tv1)).setText("score: "+turns);
+
 
     }
 
@@ -86,9 +195,10 @@ public class LatHinhActivity extends Activity {
         images.add(getResources().getDrawable(R.drawable.a18));
         images.add(getResources().getDrawable(R.drawable.a19));
         images.add(getResources().getDrawable(R.drawable.a20));
-        images.add(getResources().getDrawable(R.drawable.a21));
+        //images.add(getResources().getDrawable(R.drawable.a21));
 
     }
+
     private void loadCards(){
         try{
             int size = ROW_COUNT*COL_COUNT;
@@ -99,6 +209,7 @@ public class LatHinhActivity extends Activity {
 
             for(int i=0;i<size;i++){
                 list.add(new Integer(i));
+
             }
 
 
@@ -134,7 +245,7 @@ public class LatHinhActivity extends Activity {
         return row;
     }
 
-    private View createImageButton(int x , int y){
+    private View createImageButton(int x, int y){
         Button button = new Button(context);
         button.setBackgroundDrawable(backImage);
         button.setId(100*x+y);
@@ -147,7 +258,8 @@ public class LatHinhActivity extends Activity {
         @Override
         public void onClick(View v) {
 
-            synchronized (lock) {
+
+            ;            synchronized (lock) {
                 if(firstCard!=null && seconedCard != null){
                     return;
                 }
@@ -159,8 +271,7 @@ public class LatHinhActivity extends Activity {
 
         }
 
-        @SuppressLint("SetTextI18n")
-        private void turnCard(Button button, int x, int y) {
+        private void turnCard(Button button,int x, int y) {
             button.setBackgroundDrawable(images.get(cards[x][y]));
 
             if(firstCard==null){
@@ -174,9 +285,11 @@ public class LatHinhActivity extends Activity {
 
                 seconedCard = new Card(button,x,y);
 
-                int i = turns++;
-                ((TextView)findViewById(R.id.tv1)).setText("Tries: "+turns);
+                turns++;
 
+                ((TextView)findViewById(R.id.tv1)).setText("score: "+turns);
+
+                ((TextView)findViewById(R.id.level)).setText("Level : ");
 
                 TimerTask tt = new TimerTask() {
 
@@ -228,6 +341,5 @@ public class LatHinhActivity extends Activity {
 
 
 
+
 }
-
-
