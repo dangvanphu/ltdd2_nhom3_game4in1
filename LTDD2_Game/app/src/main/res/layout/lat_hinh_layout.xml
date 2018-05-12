@@ -20,6 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv1"
+            android:text="Score : "
+            android:paddingRight="60dp"
             android:textColor="@color/colorAccent"
             android:textSize="40sp" />
 
@@ -27,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
              android:id="@+id/level"
+            android:text="Level :"
             android:textColor="@color/colorAccent"
             android:textSize="40sp"
 
@@ -47,14 +50,16 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
 
         </TableRow>
 
         <TableRow
             android:id="@+id/TableRow05"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
         </TableRow>
 
@@ -63,7 +68,8 @@
             android:id="@+id/TableRow03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
 
 
         </TableRow>

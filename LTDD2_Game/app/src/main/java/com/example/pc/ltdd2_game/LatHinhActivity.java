@@ -46,6 +46,9 @@ public class LatHinhActivity extends Activity {
     private static Object lock = new Object();
     ProgressBar progressBar;
     int turns;
+    int score = 0;
+    int level = 1;
+
     Button start_timer;
     Button button_exit;
     CountDownTimer myCountDownTimer;
@@ -80,6 +83,7 @@ public class LatHinhActivity extends Activity {
                         if (current >= progressBar.getMax()) {
                             current = 0;
                         }
+
                         progressBar.setProgress(current + 1);
                     }
 
@@ -93,6 +97,8 @@ public class LatHinhActivity extends Activity {
                         if (current >= progressBar.getMax()) {
                             current = 0;
                         }
+                        level++;
+                        ((TextView) findViewById(R.id.level)).setText("Level : " + level);
                         progressBar.setProgress(current + 2);
                     }
                 };
@@ -164,7 +170,7 @@ public class LatHinhActivity extends Activity {
         loadCards();
 
         turns = 0;
-        ((TextView) findViewById(R.id.tv1)).setText("score: " + turns);
+
 
 
     }
@@ -283,9 +289,9 @@ public class LatHinhActivity extends Activity {
 
                 turns++;
 
-                ((TextView) findViewById(R.id.tv1)).setText("score: " + turns);
+                //((TextView) findViewById(R.id.tv1)).setText("score: " + turns);
 
-                ((TextView) findViewById(R.id.level)).setText("Level : ");
+
 
                 TimerTask tt = new TimerTask() {
 
@@ -323,6 +329,8 @@ public class LatHinhActivity extends Activity {
             if (cards[seconedCard.x][seconedCard.y] == cards[firstCard.x][firstCard.y]) {
                 firstCard.button.setVisibility(View.INVISIBLE);
                 seconedCard.button.setVisibility(View.INVISIBLE);
+                score++;
+                ((TextView) findViewById(R.id.tv1)).setText("Score: " + score);
             } else {
                 seconedCard.button.setBackgroundDrawable(backImage);
                 firstCard.button.setBackgroundDrawable(backImage);
