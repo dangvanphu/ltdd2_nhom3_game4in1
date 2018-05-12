@@ -32,12 +32,13 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 import android.os.CountDownTimer;
+
 public class LatHinhActivity extends Activity {
     private static int ROW_COUNT = -1;
-    private static int COL_COUNT =-1;
+    private static int COL_COUNT = -1;
     private Context context;
     private Drawable backImage;
-    private int [] [] cards;
+    private int[][] cards;
     private List<Drawable> images;
     private Card firstCard;
     private Card seconedCard;
@@ -58,16 +59,16 @@ public class LatHinhActivity extends Activity {
         handler = new UpdateCardsHandler();
         loadImages();
         setContentView(R.layout.lat_hinh_layout);
-        backImage =  getResources().getDrawable(R.drawable.icon);
-        start_timer=(Button)findViewById(R.id.buttonStart);
-        button_exit=(Button)findViewById(R.id.exit);
+        backImage = getResources().getDrawable(R.drawable.icon);
+        start_timer = (Button) findViewById(R.id.buttonStart);
+        button_exit = (Button) findViewById(R.id.exit);
         button_exit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-        progressBar=(ProgressBar)findViewById(R.id.progressbar);
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
         start_timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,31 +77,27 @@ public class LatHinhActivity extends Activity {
                     @Override
                     public void onTick(long l) {
                         int current = progressBar.getProgress();
-                        if (current >= progressBar.getMax())
-                        {
-                            current = 0 ;
+                        if (current >= progressBar.getMax()) {
+                            current = 0;
                         }
                         progressBar.setProgress(current + 1);
                     }
 
                     @Override
-                    public void onFinish()
-                    {
+                    public void onFinish() {
 
 
-                        Toast.makeText(LatHinhActivity.this,"qua man moi  ",Toast.LENGTH_SHORT).show();
-                        newGame(4,8);
+                        Toast.makeText(LatHinhActivity.this, "qua man moi  ", Toast.LENGTH_SHORT).show();
+                        newGame(4, 8);
                         int current = progressBar.getProgress();
-                        if (current >= progressBar.getMax())
-                        {
-                            current = 0 ;
+                        if (current >= progressBar.getMax()) {
+                            current = 0;
                         }
-                        progressBar.setProgress(current + 5);
-                        this.start();
+                        progressBar.setProgress(current + 2);
                     }
                 };
                 countDownTimer.start();
-                    }
+            }
 
 
         });
@@ -108,10 +105,10 @@ public class LatHinhActivity extends Activity {
 
         buttonListener = new ButtonListener();
 
-        mainTable = (TableLayout)findViewById(R.id.TableLayout03);
+        mainTable = (TableLayout) findViewById(R.id.TableLayout03);
 
 
-        context  = mainTable.getContext();
+        context = mainTable.getContext();
 
         Spinner s = (Spinner) findViewById(R.id.Spinner01);
         ArrayAdapter adapter;
@@ -122,17 +119,17 @@ public class LatHinhActivity extends Activity {
         //MediaPlayer song = MediaPlayer.create(LatHinhActivity.this,R.);
 
 
-        s.setOnItemSelectedListener(new OnItemSelectedListener(){
+        s.setOnItemSelectedListener(new OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(
                     android.widget.AdapterView<?> arg0,
-                    View arg1, int pos, long arg3){
+                    View arg1, int pos, long arg3) {
 
                 ((Spinner) findViewById(R.id.Spinner01)).setSelection(1);
 
-                int x,y;
-                newGame(x=4,y=6);
+                int x, y;
+                newGame(x = 4, y = 6);
 
             }
 
@@ -150,10 +147,10 @@ public class LatHinhActivity extends Activity {
         ROW_COUNT = r;
         COL_COUNT = c;
 
-        cards = new int [COL_COUNT] [ROW_COUNT];
+        cards = new int[COL_COUNT][ROW_COUNT];
 
 
-        TableRow tr = ((TableRow)findViewById(R.id.TableRow03));
+        TableRow tr = ((TableRow) findViewById(R.id.TableRow03));
         tr.removeAllViews();
 
         mainTable = new TableLayout(context);
@@ -163,11 +160,11 @@ public class LatHinhActivity extends Activity {
             mainTable.addView(createRow(y));
         }
 
-        firstCard=null;
+        firstCard = null;
         loadCards();
 
-        turns=0;
-        ((TextView)findViewById(R.id.tv1)).setText("score: "+turns);
+        turns = 0;
+        ((TextView) findViewById(R.id.tv1)).setText("score: " + turns);
 
 
     }
@@ -199,15 +196,15 @@ public class LatHinhActivity extends Activity {
 
     }
 
-    private void loadCards(){
-        try{
-            int size = ROW_COUNT*COL_COUNT;
+    private void loadCards() {
+        try {
+            int size = ROW_COUNT * COL_COUNT;
 
-            Log.i("loadCards()","size=" + size);
+            Log.i("loadCards()", "size=" + size);
 
             ArrayList<Integer> list = new ArrayList<Integer>();
 
-            for(int i=0;i<size;i++){
+            for (int i = 0; i < size; i++) {
                 list.add(new Integer(i));
 
             }
@@ -215,40 +212,39 @@ public class LatHinhActivity extends Activity {
 
             Random r = new Random();
 
-            for(int i=size-1;i>=0;i--){
-                int t=0;
+            for (int i = size - 1; i >= 0; i--) {
+                int t = 0;
 
-                if(i>0){
+                if (i > 0) {
                     t = r.nextInt(i);
                 }
 
-                t=list.remove(t).intValue();
-                cards[i%COL_COUNT][i/COL_COUNT]=t%(size/2);
+                t = list.remove(t).intValue();
+                cards[i % COL_COUNT][i / COL_COUNT] = t % (size / 2);
 
-                Log.i("loadCards()", "card["+(i%COL_COUNT)+
-                        "]["+(i/COL_COUNT)+"]=" + cards[i%COL_COUNT][i/COL_COUNT]);
+                Log.i("loadCards()", "card[" + (i % COL_COUNT) +
+                        "][" + (i / COL_COUNT) + "]=" + cards[i % COL_COUNT][i / COL_COUNT]);
             }
-        }
-        catch (Exception e) {
-            Log.e("loadCards()", e+"");
+        } catch (Exception e) {
+            Log.e("loadCards()", e + "");
         }
 
     }
 
-    private TableRow createRow(int y){
+    private TableRow createRow(int y) {
         TableRow row = new TableRow(context);
         row.setHorizontalGravity(Gravity.CENTER);
 
         for (int x = 0; x < COL_COUNT; x++) {
-            row.addView(createImageButton(x,y));
+            row.addView(createImageButton(x, y));
         }
         return row;
     }
 
-    private View createImageButton(int x, int y){
+    private View createImageButton(int x, int y) {
         Button button = new Button(context);
         button.setBackgroundDrawable(backImage);
-        button.setId(100*x+y);
+        button.setId(100 * x + y);
         button.setOnClickListener(buttonListener);
         return button;
     }
@@ -259,48 +255,47 @@ public class LatHinhActivity extends Activity {
         public void onClick(View v) {
 
 
-            ;            synchronized (lock) {
-                if(firstCard!=null && seconedCard != null){
+            ;
+            synchronized (lock) {
+                if (firstCard != null && seconedCard != null) {
                     return;
                 }
                 int id = v.getId();
-                int x = id/100;
-                int y = id%100;
-                turnCard((Button)v,x,y);
+                int x = id / 100;
+                int y = id % 100;
+                turnCard((Button) v, x, y);
             }
 
         }
 
-        private void turnCard(Button button,int x, int y) {
+        private void turnCard(Button button, int x, int y) {
             button.setBackgroundDrawable(images.get(cards[x][y]));
 
-            if(firstCard==null){
-                firstCard = new Card(button,x,y);
-            }
-            else{
+            if (firstCard == null) {
+                firstCard = new Card(button, x, y);
+            } else {
 
-                if(firstCard.x == x && firstCard.y == y){
+                if (firstCard.x == x && firstCard.y == y) {
                     return; //the user pressed the same card
                 }
 
-                seconedCard = new Card(button,x,y);
+                seconedCard = new Card(button, x, y);
 
                 turns++;
 
-                ((TextView)findViewById(R.id.tv1)).setText("score: "+turns);
+                ((TextView) findViewById(R.id.tv1)).setText("score: " + turns);
 
-                ((TextView)findViewById(R.id.level)).setText("Level : ");
+                ((TextView) findViewById(R.id.level)).setText("Level : ");
 
                 TimerTask tt = new TimerTask() {
 
                     @Override
                     public void run() {
-                        try{
+                        try {
                             synchronized (lock) {
                                 handler.sendEmptyMessage(0);
                             }
-                        }
-                        catch (Exception e) {
+                        } catch (Exception e) {
                             Log.e("E1", e.getMessage());
                         }
                     }
@@ -315,7 +310,7 @@ public class LatHinhActivity extends Activity {
 
     }
 
-    class UpdateCardsHandler extends Handler{
+    class UpdateCardsHandler extends Handler {
 
         @Override
         public void handleMessage(Message msg) {
@@ -323,23 +318,22 @@ public class LatHinhActivity extends Activity {
                 checkCards();
             }
         }
-        public void checkCards(){
-            if(cards[seconedCard.x][seconedCard.y] == cards[firstCard.x][firstCard.y]){
+
+        public void checkCards() {
+            if (cards[seconedCard.x][seconedCard.y] == cards[firstCard.x][firstCard.y]) {
                 firstCard.button.setVisibility(View.INVISIBLE);
                 seconedCard.button.setVisibility(View.INVISIBLE);
-            }
-            else {
+            } else {
                 seconedCard.button.setBackgroundDrawable(backImage);
                 firstCard.button.setBackgroundDrawable(backImage);
             }
 
-            firstCard=null;
-            seconedCard=null;
+            firstCard = null;
+            seconedCard = null;
         }
     }
 
 
-
-
-
 }
+
+
