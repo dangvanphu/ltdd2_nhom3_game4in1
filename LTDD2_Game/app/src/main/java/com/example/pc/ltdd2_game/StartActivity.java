@@ -50,7 +50,6 @@ public class StartActivity extends AppCompatActivity {
         btnInfo = (ImageButton) findViewById(R.id.ibtnInformation);
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_infomation);
-        dialog.setTitle("About game");
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
