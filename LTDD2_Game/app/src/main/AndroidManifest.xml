@@ -23,7 +23,7 @@
         <activity android:name=".OptionActivity" />
 
         <activity android:name=".GameActivity"></activity>
-        <service android:name="Service.MusicService" ></service>
+        <service android:name=".data_access.MusicService" ></service>
         <activity android:name=".ContinueActivity"></activity>
         <activity android:name=".ChooseGameActivity" />
         <activity android:name=".FlappyActivity"

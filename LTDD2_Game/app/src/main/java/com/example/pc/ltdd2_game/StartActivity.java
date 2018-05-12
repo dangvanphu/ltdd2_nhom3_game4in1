@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import Service.MusicService;
+import com.example.pc.ltdd2_game.data_access.MusicService;
 
 public class StartActivity extends AppCompatActivity {
 

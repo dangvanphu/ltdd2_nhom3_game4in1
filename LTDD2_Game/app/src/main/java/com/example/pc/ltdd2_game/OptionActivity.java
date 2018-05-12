@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import Service.MusicService;
+import com.example.pc.ltdd2_game.data_access.MusicService;
 
 public class OptionActivity extends AppCompatActivity {
     private Button btnMusic;

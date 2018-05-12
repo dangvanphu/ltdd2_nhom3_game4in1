@@ -1,4 +1,4 @@
-package Service;
+package com.example.pc.ltdd2_game.data_access;
 
 import android.app.Service;
 import android.content.Intent;

@@ -75,15 +75,16 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Content Version: "
-            android:textSize="25dp"
-            android:textStyle="bold"/>
+            android:text="Member: Phú, Vinh, Pháp, Toàn, Quang"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="3"
-            android:text="Game 2 in 1 include Flappy nobi and LatHinh"
-            android:textSize="25dp"
+            android:layout_weight="1"
+            android:text="Master: Thầy Trương Bá Thái"
+            android:textSize="20dp"
             android:textStyle="bold"
            android:gravity="center_horizontal"/>
     </LinearLayout>
