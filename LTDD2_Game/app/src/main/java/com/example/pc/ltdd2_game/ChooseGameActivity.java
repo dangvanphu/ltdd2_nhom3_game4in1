@@ -17,12 +17,17 @@ public class ChooseGameActivity extends AppCompatActivity {
 
         gameFlappy = (ImageView) findViewById(R.id.gameFlappy);
         gameLathinh = (ImageView) findViewById(R.id.gameLatHinh);
-        txtScore = (TextView) findViewById(R.id.txtScore);
+        txtScore = (TextView) findViewById(R.id.txtScoreS);
         txtUser = (TextView) findViewById(R.id.txtUser);
 
         Intent intent = getIntent();
-        txtUser.setText(intent.getStringExtra("USER"));
-        txtScore.setText(intent.getStringExtra("SCORE"));
+        if (intent.getStringExtra("USER") == null){
+            txtUser.setVisibility(View.INVISIBLE);
+            txtScore.setText("Score : 0" );
+        }else {
+            txtUser.setText("User :" + intent.getStringExtra("USER"));
+            txtScore.setText("Score : " + intent.getStringExtra("SCORE"));
+        }
         gameFlappy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
