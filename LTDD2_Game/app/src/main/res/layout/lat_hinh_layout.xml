@@ -110,16 +110,14 @@
 
         </Spinner>
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tang Thoi Gian"
+            style="@style/StyleButton"
+            android:text="Time"
             android:id="@+id/buttonStart"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="0dp" />
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/StyleButton"
             android:text="Exit "
             android:id="@+id/exit"
             android:layout_marginLeft="55dp"

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:background="@drawable/bgame"
+    >
+    <ImageView
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:scaleType = "fitXY"
+        android:src = "@drawable/logo"
+        android:layout_marginBottom="20dp"
+        />
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="LOADING"
+        android:textStyle="bold|italic"
+        />
+    <ProgressBar
+        android:layout_marginTop="5dp"
+        android:id="@+id/progressBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp" />
+</LinearLayout>
