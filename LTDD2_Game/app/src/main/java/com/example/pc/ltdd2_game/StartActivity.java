@@ -51,13 +51,6 @@ public class StartActivity extends AppCompatActivity {
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_infomation);
 
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // mediaPlayer.start();
-            }
-        });
-
         btnOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
