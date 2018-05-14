@@ -62,7 +62,7 @@ public class LatHinhActivity extends Activity {
         handler = new UpdateCardsHandler();
         loadImages();
         setContentView(R.layout.lat_hinh_layout);
-        backImage = getResources().getDrawable(R.drawable.icon);
+        backImage = getResources().getDrawable(R.drawable.icon3);
         start_timer = (Button) findViewById(R.id.buttonStart);
         button_exit = (Button) findViewById(R.id.exit);
         button_exit.setOnClickListener(new OnClickListener() {
@@ -92,7 +92,7 @@ public class LatHinhActivity extends Activity {
 
 
                         Toast.makeText(LatHinhActivity.this, "qua man moi  ", Toast.LENGTH_SHORT).show();
-                        newGame(4, 8);
+                        newGame(4, 5);
                         int current = progressBar.getProgress();
                         if (current >= progressBar.getMax()) {
                             current = 0;
@@ -135,7 +135,7 @@ public class LatHinhActivity extends Activity {
                 ((Spinner) findViewById(R.id.Spinner01)).setSelection(1);
 
                 int x, y;
-                newGame(x = 4, y = 6);
+                newGame(x = 4, y = 4);
 
             }
 
@@ -308,7 +308,7 @@ public class LatHinhActivity extends Activity {
                 };
 
                 Timer t = new Timer(false);
-                t.schedule(tt, 1300);
+                t.schedule(tt, 1000);
             }
 
 
