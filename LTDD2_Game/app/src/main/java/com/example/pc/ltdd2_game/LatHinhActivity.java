@@ -178,26 +178,16 @@ public class LatHinhActivity extends Activity {
     private void loadImages() {
         images = new ArrayList<Drawable>();
 
-        images.add(getResources().getDrawable(R.drawable.a1));
-        images.add(getResources().getDrawable(R.drawable.a2));
-        images.add(getResources().getDrawable(R.drawable.a3));
-        images.add(getResources().getDrawable(R.drawable.a4));
-        images.add(getResources().getDrawable(R.drawable.a5));
-        images.add(getResources().getDrawable(R.drawable.a6));
-        images.add(getResources().getDrawable(R.drawable.a7));
-        images.add(getResources().getDrawable(R.drawable.a8));
-        images.add(getResources().getDrawable(R.drawable.a9));
-        images.add(getResources().getDrawable(R.drawable.a10));
-        images.add(getResources().getDrawable(R.drawable.a11));
-        images.add(getResources().getDrawable(R.drawable.a12));
-        images.add(getResources().getDrawable(R.drawable.a13));
-        images.add(getResources().getDrawable(R.drawable.a14));
-        images.add(getResources().getDrawable(R.drawable.a15));
-        images.add(getResources().getDrawable(R.drawable.a16));
-        images.add(getResources().getDrawable(R.drawable.a17));
-        images.add(getResources().getDrawable(R.drawable.a18));
-        images.add(getResources().getDrawable(R.drawable.a19));
-        images.add(getResources().getDrawable(R.drawable.a20));
+        images.add(getResources().getDrawable(R.drawable.b1));
+        images.add(getResources().getDrawable(R.drawable.b2));
+        images.add(getResources().getDrawable(R.drawable.b3));
+        images.add(getResources().getDrawable(R.drawable.b4));
+        images.add(getResources().getDrawable(R.drawable.b5));
+        images.add(getResources().getDrawable(R.drawable.b6));
+        images.add(getResources().getDrawable(R.drawable.b7));
+        images.add(getResources().getDrawable(R.drawable.b8));
+        images.add(getResources().getDrawable(R.drawable.b9));
+        images.add(getResources().getDrawable(R.drawable.b10));
         //images.add(getResources().getDrawable(R.drawable.a21));
 
     }
