@@ -25,8 +25,8 @@ public class ChooseGameActivity extends AppCompatActivity {
             txtUser.setVisibility(View.INVISIBLE);
             txtScore.setText("Score : 0" );
         }else {
-            txtUser.setText("User :" + intent.getStringExtra("USER"));
-            txtScore.setText("Score : " + intent.getStringExtra("SCORE"));
+            txtUser.setText(intent.getStringExtra("USER"));
+            txtScore.setText(intent.getStringExtra("SCORE"));
         }
         gameFlappy.setOnClickListener(new View.OnClickListener() {
             @Override

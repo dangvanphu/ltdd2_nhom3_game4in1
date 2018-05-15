@@ -35,7 +35,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private CharacterSprite characterSprite;
     public PipeSprite pipe1, pipe2, pipe3;
     public static int gapHeight = 500;
-    public static int velocity = 10;
+    public static int velocity = 16;
     private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
     private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
     private Dialog dialog;

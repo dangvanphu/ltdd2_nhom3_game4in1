@@ -18,7 +18,7 @@ public class MusicService extends Service implements MediaPlayer.OnCompletionLis
 
     @Override
     public void onCreate() {
-        mediaPlayer = MediaPlayer.create(this, R.raw.cnd);// raw/s.mp3
+        mediaPlayer = MediaPlayer.create(this, R.raw.nhacgame);// raw/s.mp3
         mediaPlayer.setOnCompletionListener(this);
     }
 

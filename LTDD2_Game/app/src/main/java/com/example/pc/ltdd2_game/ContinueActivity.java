@@ -28,7 +28,7 @@ public class ContinueActivity extends AppCompatActivity {
         adapter = new MyAdapter(ContinueActivity.this, R.layout.item_continute, items);
         listView.setAdapter(adapter);
 
-        ItemContinue item = new ItemContinue("ABC", "200");
+        ItemContinue item = new ItemContinue("Người chơi : A", "Điểm sô : 200");
         items.add(item);
         adapter.notifyDataSetChanged();
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/chosenegame"
+    android:background="@drawable/bgchoose"
     android:orientation="vertical"
 
     tools:context=".ChooseGameActivity">
@@ -43,20 +43,19 @@
 
         <ImageView
             android:id="@+id/gameLatHinh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:onClick="setTime"
-            android:src="@drawable/icon_gamelathinh"
-
+            android:layout_width="149dp"
+            android:layout_height="139dp"
+            android:layout_marginTop="120dp"
+            android:src="@drawable/lathinh"
+            android:layout_marginRight="40dp"
             />
 
         <ImageView
             android:id="@+id/gameFlappy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:src="@drawable/icon_gamflappy" />
+            android:layout_width="149dp"
+            android:layout_height="139dp"
+            android:layout_marginTop="120dp"
+            android:src="@drawable/nobita_super" />
     </LinearLayout>
 
     <LinearLayout
