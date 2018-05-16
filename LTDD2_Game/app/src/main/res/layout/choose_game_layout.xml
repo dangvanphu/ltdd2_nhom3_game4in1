@@ -58,17 +58,6 @@
             android:src="@drawable/nobita_super" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center_horizontal">
 
-        <Button
-            android:id="@+id/btnSave"
-            style="@style/StyleButton"
-            android:layout_marginTop="25dp"
-            android:text="Save" />
-    </LinearLayout>
 
 </LinearLayout>

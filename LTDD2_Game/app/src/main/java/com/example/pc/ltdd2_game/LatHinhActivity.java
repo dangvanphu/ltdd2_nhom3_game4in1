@@ -33,6 +33,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 import android.os.CountDownTimer;
 
+import com.example.pc.ltdd2_game.data_access.SounPoolPlayer;
+
 public class LatHinhActivity extends Activity {
     private static int ROW_COUNT = -1;
     private static int COL_COUNT = -1;
@@ -45,6 +47,7 @@ public class LatHinhActivity extends Activity {
     private ButtonListener buttonListener;
     private static Object lock = new Object();
     ProgressBar progressBar;
+    SounPoolPlayer sounPoolPlayer;
     int turns;
     int score = 0;
     int level = 1;
@@ -58,7 +61,7 @@ public class LatHinhActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        sounPoolPlayer = new SounPoolPlayer(this);
         handler = new UpdateCardsHandler();
         loadImages();
         setContentView(R.layout.lat_hinh_layout);
@@ -172,7 +175,6 @@ public class LatHinhActivity extends Activity {
         turns = 0;
 
 
-
     }
 
     private void loadImages() {
@@ -252,6 +254,7 @@ public class LatHinhActivity extends Activity {
 
 
             ;
+            sounPoolPlayer.playClikLatHinh();
             synchronized (lock) {
                 if (firstCard != null && seconedCard != null) {
                     return;
@@ -280,7 +283,6 @@ public class LatHinhActivity extends Activity {
                 turns++;
 
                 //((TextView) findViewById(R.id.tv1)).setText("score: " + turns);
-
 
 
                 TimerTask tt = new TimerTask() {
@@ -317,6 +319,7 @@ public class LatHinhActivity extends Activity {
 
         public void checkCards() {
             if (cards[seconedCard.x][seconedCard.y] == cards[firstCard.x][firstCard.y]) {
+                sounPoolPlayer.choosenRigth();
                 firstCard.button.setVisibility(View.INVISIBLE);
                 seconedCard.button.setVisibility(View.INVISIBLE);
                 score++;

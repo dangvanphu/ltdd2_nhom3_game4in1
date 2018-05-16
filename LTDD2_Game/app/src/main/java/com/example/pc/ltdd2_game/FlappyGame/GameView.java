@@ -24,6 +24,7 @@ import com.example.pc.ltdd2_game.FlappyGame.PipeSprite;
 import com.example.pc.ltdd2_game.GameActivity;
 import com.example.pc.ltdd2_game.R;
 import com.example.pc.ltdd2_game.StartActivity;
+import com.example.pc.ltdd2_game.data_access.SounPoolPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +40,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
     private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
     private Dialog dialog;
+    SounPoolPlayer sounPoolPlayer;
 
     public GameView(Context context) {
         super(context);
-
+sounPoolPlayer = new SounPoolPlayer(context);
         getHolder().addCallback(this);
 
         thread = new MainThread(getHolder(), this);
@@ -75,6 +77,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        sounPoolPlayer.mouseClickFlappy();
         characterSprite.y = characterSprite.y - (characterSprite.yVelocity * 10);
         return super.onTouchEvent(event);
     }
@@ -137,7 +140,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
         super.draw(canvas);
         if (canvas != null) {
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.backgroud_potrait);
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.backgroud_potrait1);
             canvas.drawBitmap(bitmap, 0, 0, null);
             //canvas.drawRGB(0, 200, 205);
             characterSprite.draw(canvas);
@@ -187,7 +190,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     public void resetLevel() {
 
-        characterSprite.y = 100;
+        characterSprite.y = 700;
         pipe1.xX = 2000;
         pipe1.yY = 0;
         pipe2.xX = 4500;

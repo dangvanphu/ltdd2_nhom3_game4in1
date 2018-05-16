@@ -60,19 +60,19 @@ public class OptionActivity extends AppCompatActivity {
             }
         });
 
-//        btnSound.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (isPlaying) {
-//                    stopService(playbackServiceIntent);
-//                    btnSound.setText("sound : off");
-//                } else {
-//                    btnSound.setText("sound : on");
-//                    startService(playbackServiceIntent);
-//                }
-//                isPlaying = !isPlaying;
-//            }
-//        });
+        btnSound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isPlaying) {
+                   // stopService(playbackServiceIntent);
+                    btnSound.setText("sound : off");
+                } else {
+                    btnSound.setText("sound : on");
+                   // startService(playbackServiceIntent);
+                }
+                isPlaying = !isPlaying;
+            }
+        });
     }
 
     @Override

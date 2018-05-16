@@ -24,7 +24,7 @@ public class CharacterSprite {
     public CharacterSprite (Bitmap bmp) {
         image = bmp;
         x = 100;
-        y = 100;
+        y = 700;
     }
 
 
